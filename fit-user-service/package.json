@@ -9,7 +9,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "nest start --watch",
+    "start:dev": "sh -c 'PORT=${APP_PORT:-${MS_PORT:-3001}}; PID=$(lsof -tiTCP:${PORT} -sTCP:LISTEN 2>/dev/null || true); if [ -n \"$PID\" ]; then kill $PID; fi; nest start --watch'",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",

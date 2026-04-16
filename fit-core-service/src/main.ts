@@ -16,6 +16,7 @@ async function bootstrap() {
   );
 
   await app.listen();
+  console.log(`Running on port ${process.env.MS_PORT}`)
 }
 
 void bootstrap();

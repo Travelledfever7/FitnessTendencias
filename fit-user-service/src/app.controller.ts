@@ -22,8 +22,8 @@ export class AppController {
   // }
 
   @MessagePattern({ cmd: 'user_register' })
-  async register(@Body() body: RegisterPayload) {
-    return this.appService.register(body.nombre, body.usuario, body.password);
+  async register(@Payload() payload: RegisterPayload) {
+    return this.appService.register(payload.nombre, payload.usuario, payload.password);
   }
 
   @MessagePattern({ cmd: 'user_name_by_id' })
