@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Reporte del Cliente</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    .card {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Reporte del Cliente</h1>
+
+  <div class="section">
+    <p><strong>Nombre:</strong> {{client_name}}</p>
+    <p><strong>Objetivo:</strong> {{goal}}</p>
+    <p><strong>Fecha:</strong> {{generatedAt}}</p>
+  </div>
+
+  <div class="section">
+    <h2>Plan de Entrenamiento</h2>
+
+    {{#if training.length}}
+      {{#each training}}
+        <div class="card">
+          <h3>Fecha: {{this.date}}</h3>
+          <p><strong>Completado:</strong> {{this.completed}}</p>
+
+          <table>
+            <tr>
+              <th>Ejercicio</th>
+              <th>Sets</th>
+              <th>Reps</th>
+              <th>Peso</th>
+            </tr>
+
+            {{#each this.exercises}}
+            <tr>
+              <td>{{this.name}}</td>
+              <td>{{this.sets}}</td>
+              <td>{{this.reps}}</td>
+              <td>{{this.weight}}</td>
+            </tr>
+            {{/each}}
+          </table>
+        </div>
+      {{/each}}
+    {{else}}
+      <p>No hay registros de entrenamiento.</p>
+    {{/if}}
+  </div>
+
+  <div class="section">
+    <h2>Plan de Nutrición</h2>
+
+    {{#if nutrition.length}}
+      <table>
+        <tr>
+          <th>Fecha</th>
+          <th>Calorías</th>
+          <th>Agua (ml)</th>
+          <th>Suplementos</th>
+        </tr>
+
+        {{#each nutrition}}
+        <tr>
+          <td>{{this.date}}</td>
+          <td>{{this.calories}}</td>
+          <td>{{this.waterMl}}</td>
+          <td>{{this.supplements}}</td>
+        </tr>
+        {{/each}}
+      </table>
+    {{else}}
+      <p>No hay registros de nutrición.</p>
+    {{/if}}
+  </div>
+
+</body>
+</html>

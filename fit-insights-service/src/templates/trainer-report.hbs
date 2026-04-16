@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Reporte de Entrenador</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+    }
+
+    .header {
+      margin-bottom: 20px;
+    }
+
+    .summary {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    .empty {
+      margin-top: 10px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Reporte de Clientes del Entrenador</h1>
+
+  <div class="header">
+    <p><strong>Entrenador:</strong> {{trainer_name}}</p>
+    <p><strong>Fecha de generación:</strong> {{generatedAt}}</p>
+  </div>
+
+  <div class="summary">
+    <p><strong>Total de clientes:</strong> {{totalClients}}</p>
+  </div>
+
+  <h2>Listado de Clientes</h2>
+
+  {{#if clients.length}}
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Objetivo</th>
+      </tr>
+
+      {{#each clients}}
+      <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.goal}}</td>
+      </tr>
+      {{/each}}
+    </table>
+  {{else}}
+    <p class="empty">No hay clientes asignados a este entrenador.</p>
+  {{/if}}
+
+</body>
+</html>
