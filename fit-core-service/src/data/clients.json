@@ -1,0 +1,96 @@
+{
+  "clients": [
+    {
+      "id": "1",
+      "name": "Juan Pérez",
+      "goal": "Perder grasa",
+      "training": [
+        {
+          "date": "2026-04-10",
+          "completed": true,
+          "exercises": [
+            { "name": "Press banca", "sets": 3, "reps": 10, "weight": 60 },
+            { "name": "Sentadilla", "sets": 3, "reps": 12, "weight": 80 }
+          ]
+        }
+      ],
+      "nutrition": [
+        {
+          "date": "2026-04-10",
+          "calories": 2200,
+          "waterMl": 2000,
+          "supplements": ["Proteína"]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "María Gómez",
+      "goal": "Ganar masa muscular",
+      "training": [
+        {
+          "date": "2026-04-10",
+          "completed": true,
+          "exercises": [
+            { "name": "Peso muerto", "sets": 4, "reps": 8, "weight": 70 },
+            { "name": "Dominadas", "sets": 3, "reps": 6, "weight": 0 }
+          ]
+        }
+      ],
+      "nutrition": [
+        {
+          "date": "2026-04-10",
+          "calories": 2500,
+          "waterMl": 1800,
+          "supplements": ["Creatina"]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Carlos Ramírez",
+      "goal": "Mejorar resistencia",
+      "training": [
+        {
+          "date": "2026-04-11",
+          "completed": true,
+          "exercises": [
+            { "name": "Correr", "sets": 1, "reps": 1, "weight": 0 },
+            { "name": "Burpees", "sets": 3, "reps": 15, "weight": 0 }
+          ]
+        }
+      ],
+      "nutrition": [
+        {
+          "date": "2026-04-11",
+          "calories": 2000,
+          "waterMl": 2500,
+          "supplements": []
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Laura Torres",
+      "goal": "Tonificar",
+      "training": [
+        {
+          "date": "2026-04-11",
+          "completed": false,
+          "exercises": [
+            { "name": "Zancadas", "sets": 3, "reps": 12, "weight": 20 },
+            { "name": "Plancha", "sets": 3, "reps": 1, "weight": 0 }
+          ]
+        }
+      ],
+      "nutrition": [
+        {
+          "date": "2026-04-11",
+          "calories": 1800,
+          "waterMl": 1500,
+          "supplements": ["Multivitamínico"]
+        }
+      ]
+    }
+  ]
+}
