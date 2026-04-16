@@ -3,11 +3,6 @@ import { AppRepository } from './app.repository';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
 
-type MongoDuplicateKeyError = {
-  code?: number;
-  keyPattern?: Record<string, number>;
-};
-
 @Injectable()
 export class AppService {
   constructor(private readonly appRepo: AppRepository, @Inject('WORKSPACE_SERVICE') private workspaceClient: ClientProxy,
@@ -26,14 +21,13 @@ export class AppService {
     const registeredUser = await this.appRepo.register(nombre, usuario, password);
     const registeredUserPayloadId = { id: registeredUser.id }
 
-    await firstValueFrom(
-      // Esto no debe ser asi por que yo no se el nombre del entrnador, ni el usuario, 
+    const confirmationId = await firstValueFrom(
       this.workspaceClient.send<{ id: string }>(
-        { cmd: 'user_name_by_id' }, // TODO: toca cambiar el cmd al de WORKSPACE_SERVICE para registrar el usuario y vincularlo con los clientes
+        { cmd: 'createWorkspace' },
         registeredUserPayloadId,
       ),
     );
-
+    console.log("ID de confirmacion de parte del WORKSPACE_SERVICE: ", confirmationId)
     return registeredUser
   }
 
