@@ -9,7 +9,10 @@ import { firstValueFrom } from 'rxjs';
 @Injectable()
 export class AppService {
 
-  constructor(@Inject("USER_SERVICE") private readonly userMService: ClientProxy) { }
+  constructor(
+    @Inject("USER_SERVICE") private readonly userMService: ClientProxy,
+    @Inject("WORKSPACE_SERVICE") private readonly workspaceMService: ClientProxy,
+    @Inject("INSIGHTS_SERVICE") private readonly insightsMService: ClientProxy) { }
 
   async handleUserLogin(usuario: string, password: string) {
     const pattern = { cmd: 'user_login' }
@@ -35,9 +38,23 @@ export class AppService {
     return this.userMService.send<string>(pattern, payload)
   }
 
-  async handleGetClients(idEntrenador: number) {
+  async handleGetClients(idEntrenador: string) {
     const pattern = { cmd: 'findClients' }
-    const payload = idEntrenador
-    return this.userMService.send<string>(pattern, payload)
+    const payload = { idEntrenador }
+    return this.workspaceMService.send<string>(pattern, payload)
+  }
+
+  async handleGetTrainerReport(idEntrenador: string) {
+    const pattern = { cmd: 'generate_trainer_report' }
+    const payload = { trainerId: idEntrenador }
+    const response = await firstValueFrom(this.insightsMService.send<{ html: string }>(pattern, payload))
+    return response.html
+  }
+
+  async handleGetClientPlanReport(idCliente: string) {
+    const pattern = { cmd: 'generate_client_plan_report' }
+    const payload = { clientId: idCliente }
+    const response = await firstValueFrom(this.insightsMService.send<{ html: string }>(pattern, payload))
+    return response.html
   }
 }

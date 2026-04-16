@@ -24,9 +24,8 @@ export class AppRepository {
     };
   }
 
-  async getById(id: string) {
-    const user = await this.userModel.findById(id)
-
-    return user?.nombre
+  async getById(id: string): Promise<string> {
+    const user = await this.userModel.findById(id).lean()
+    return user?.nombre ?? 'Usuario no encontrado'
   }
 }

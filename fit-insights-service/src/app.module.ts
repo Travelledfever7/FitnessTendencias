@@ -11,7 +11,7 @@ import { AppService } from './app.service';
         transport: Transport.TCP,
         options: {
           host: process.env.WORKSPACE_MS_HOST ?? 'localhost',
-          port: Number(process.env.WORKSPACE_MS_PORT ?? 3001),
+          port: Number(process.env.WORKSPACE_MS_PORT ?? 3002),
         },
       },
       {
@@ -19,7 +19,7 @@ import { AppService } from './app.service';
         transport: Transport.TCP,
         options: {
           host: process.env.USER_MS_HOST ?? 'localhost',
-          port: Number(process.env.USER_MS_PORT ?? 3002),
+          port: Number(process.env.USER_MS_PORT ?? 3001),
         },
       },
     ]),

@@ -27,8 +27,8 @@ export class AppController {
   }
 
   @MessagePattern({ cmd: 'user_name_by_id' })
-  async getById(@Payload() payload: UserId) {
-    return this.appService.getById(payload.id);
+  async getById(@Payload() payload: { trainerId: string }) {
+    return this.appService.getById(payload.trainerId);
   }
 }
 

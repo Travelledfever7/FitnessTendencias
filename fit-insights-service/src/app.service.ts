@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
-import * as Handlebars from 'handlebars';
+import Handlebars from 'handlebars';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -10,7 +10,7 @@ export class AppService {
   constructor(
     @Inject('WORKSPACE_SERVICE') private workspaceClient: ClientProxy,
     @Inject('USER_SERVICE') private userClient: ClientProxy,
-  ) {}
+  ) { }
 
   async generateTrainerReport(trainerId: string): Promise<{
     html: string;
@@ -61,7 +61,7 @@ export class AppService {
     meta: { totalTrainings: number; totalNutritionLogs: number };
   }> {
     const client = await firstValueFrom<Client>(
-      this.workspaceClient.send<Client>({ cmd: 'findClient' }, { clientId }),
+      this.workspaceClient.send<Client>({ cmd: 'findClient' }, { idCliente: clientId }),
     );
 
     if (!client) {

@@ -25,7 +25,7 @@ export class WorkspacesService {
   }
 
   async getClientNames(idEntrenador: string) {
-    const workspace = await this.prismaService.workspaces.findUnique({
+    const workspace = await this.prismaService.workspaces.findFirst({
       where: {
         idEntrenador,
       },
@@ -38,13 +38,22 @@ export class WorkspacesService {
       throw new Error('Workspace no encontrado');
     }
 
-    const clients = (workspace.clients as any).clients;
+    const clientsData = workspace.clients as any;
+    const clients = Array.isArray(clientsData) ? clientsData : clientsData?.clients;
+
+    if (!clients || !Array.isArray(clients)) {
+      throw new Error('Datos de clientes inválidos');
+    }
 
     return clients.map((client: any) => client.name);
   }
 
   getCliente(idCliente: string) {
-    return clients.find(client => client.id === idCliente);
+    const client = clients.find(client => client.id === idCliente);
+    if (!client) {
+      throw new Error(`Cliente con id ${idCliente} no encontrado`);
+    }
+    return client;
   }
 
 

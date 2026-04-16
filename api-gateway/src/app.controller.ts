@@ -18,10 +18,21 @@ export class AppController {
     return this.appService.handleUserRegister(body.nombre, body.usuario, body.password);
   }
 
-  @Get('/clients')
-  async getClients(@Param('id') idEntrenador: number) {
+  @Get('/clients/:id')
+  async getClients(@Param('id') idEntrenador: string) {
     return this.appService.handleGetClients(idEntrenador);
   }
+
+  @Get('/report-clients/:id')
+  async trainerReport(@Param('id') idEntrenador: string) {
+    return this.appService.handleGetTrainerReport(idEntrenador)
+  }
+
+  @Get('/report-client-plan/:id')
+  async clientPlanReport(@Param('id') idCliente: string) {
+    return this.appService.handleGetClientPlanReport(idCliente)
+  }
+
 }
 
 type UserCredentials = {

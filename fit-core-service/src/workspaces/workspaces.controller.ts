@@ -12,8 +12,8 @@ export class WorkspacesController {
   }
 
   @MessagePattern({ cmd: 'findAllWorkspace' })
-  findWorkspace(@Payload() data: { idEntrenador: string }) {
-    return this.workspacesService.findWorkspace(data.idEntrenador);
+  findWorkspace(@Payload() data: { trainerId: string }) {
+    return this.workspacesService.findWorkspace(data.trainerId);
   }
 
   @MessagePattern({ cmd: 'findClients' })
