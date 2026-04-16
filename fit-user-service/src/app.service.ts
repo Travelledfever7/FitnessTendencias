@@ -29,7 +29,7 @@ export class AppService {
     await firstValueFrom(
       // Esto no debe ser asi por que yo no se el nombre del entrnador, ni el usuario, 
       this.workspaceClient.send<{ id: string }>(
-        { cmd: 'user_name_by_id' }, // TODO: toca cambiar el cmd al de WORKSPACE_SERVICE para registrar el usuario y vincularlo con los clientes
+        { cmd: 'createWorkspace' },
         registeredUserPayloadId,
       ),
     );
