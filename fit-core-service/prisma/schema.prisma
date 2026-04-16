@@ -12,6 +12,6 @@ datasource db {
 }
 
 model workspaces {
-  idEntrenador Int   @id
+  idEntrenador String @id
   clients      Json
 }

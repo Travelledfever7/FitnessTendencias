@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import 'dotenv/config';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         transport: Transport.TCP,
         options: {
           host: process.env.USERS_MS_HOST ?? 'localhost',
-          port: Number(process.env.USERS_MS_PORT ?? 4001)
+          port: Number(process.env.USERS_MS_PORT ?? 3001)
         }
       },
       {
@@ -23,7 +24,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         transport: Transport.TCP,
         options: {
           host: process.env.WORKSPACE_MS_HOST ?? 'localhost',
-          port: Number(process.env.WORKSPACE_MS_PORT) ?? 4002
+          port: Number(process.env.WORKSPACE_MS_PORT) ?? 3002
         }
       },
       {
@@ -31,7 +32,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         transport: Transport.TCP,
         options: {
           host: process.env.INSIGHTS_MS_HOST ?? 'localhost',
-          port: Number(process.env.INSIGHTS_MS_PORT) ?? 4003
+          port: Number(process.env.INSIGHTS_MS_PORT) ?? 3003
         }
       },
     ])

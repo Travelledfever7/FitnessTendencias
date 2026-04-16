@@ -10,7 +10,7 @@ async function bootstrap() {
       transport: Transport.TCP,
       options: {
         host: process.env.MS_HOST ?? 'localhost',
-        port: Number(process.env.MS_PORT ?? 4001),
+        port: Number(process.env.MS_PORT ?? 3001),
       },
     },
   );

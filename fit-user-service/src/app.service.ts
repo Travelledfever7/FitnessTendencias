@@ -19,7 +19,7 @@ export class AppService {
 
   async register(nombre: string, usuario: string, password: string) {
     const registeredUser = await this.appRepo.register(nombre, usuario, password);
-    const registeredUserPayloadId = { id: registeredUser.id }
+    const registeredUserPayloadId = { idEntrenador: registeredUser.id }
 
     const confirmationId = await firstValueFrom(
       this.workspaceClient.send<{ id: string }>(

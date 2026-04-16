@@ -10,7 +10,7 @@ export class WorkspacesService {
   constructor(private readonly prismaService: PrismaService) { }
 
 
-  async create(idEntrenador: number) {
+  async create(idEntrenador: string) {
     try {
       const createdWorkspace = await this.prismaService.workspaces.create({
         data: {
@@ -24,7 +24,7 @@ export class WorkspacesService {
     }
   }
 
-  async getClientNames(idEntrenador: number) {
+  async getClientNames(idEntrenador: string) {
     const workspace = await this.prismaService.workspaces.findUnique({
       where: {
         idEntrenador,
@@ -48,7 +48,7 @@ export class WorkspacesService {
   }
 
 
-  async findWorkspace(idEntrenador: number) {
+  async findWorkspace(idEntrenador: string) {
     try {
       const workspace = await this.prismaService.workspaces.findUnique({
         where: {
