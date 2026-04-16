@@ -7,23 +7,22 @@ export class WorkspacesController {
   constructor(private readonly workspacesService: WorkspacesService) {}
 
   @MessagePattern({ cmd : 'createWorkspace'})
-  create(data: { idEntrenador: number }) {
+  create(@Payload() data: { idEntrenador: number }) {
     return this.workspacesService.create(data.idEntrenador);
   }
   
-
   @MessagePattern({ cmd : 'findAllWorkspace' })
-  findWorkspace(idEntrenador: number) {
-    return this.workspacesService.findWorkspace(idEntrenador);
+  findWorkspace(@Payload() data: { idEntrenador: number }) {
+    return this.workspacesService.findWorkspace(data.idEntrenador);
   }
 
   @MessagePattern({ cmd : 'findClients' })
-  findClients(idEntrenador: number) {
-    return this.workspacesService.getClientNames(idEntrenador);
+  findClients(@Payload() data: { idEntrenador: number }) {
+    return this.workspacesService.getClientNames(data.idEntrenador);
   }
 
-  @MessagePattern('removeWorkspace')
-  remove(@Payload() id: number) {
-    return this.workspacesService.remove(id);
+  @MessagePattern({ cmd : 'findClient' })
+  findClient(@Payload() data: { idCliente: string }) {
+    return this.workspacesService.getCliente(data.idCliente);
   }
 }

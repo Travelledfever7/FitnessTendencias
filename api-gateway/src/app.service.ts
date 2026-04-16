@@ -34,4 +34,10 @@ export class AppService {
 
     return this.userMService.send<string>(pattern, payload)
   }
+
+  async handleGetClients(idEntrenador: number) {
+    const pattern = { cmd: 'findClients' }
+    const payload = idEntrenador
+    return this.userMService.send<string>(pattern, payload)
+  }
 }

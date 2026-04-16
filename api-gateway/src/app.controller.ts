@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 /*
   Controlador que recibe las peticiones HTTP y redirecciona al servicio.
@@ -16,6 +16,11 @@ export class AppController {
   @Post('/auth/register')
   async userRegister(@Body() body: RegisterUser) {
     return this.appService.handleUserRegister(body.nombre, body.usuario, body.password);
+  }
+
+  @Get('/clients')
+  async getClients(@Param('id') idEntrenador: number) {
+    return this.appService.handleGetClients(idEntrenador);
   }
 }
 
