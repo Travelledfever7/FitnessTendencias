@@ -19,7 +19,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         transport: Transport.TCP,
         options: {
           host: process.env.WORKSPACE_MS_HOST ?? 'localhost',
-          port: Number(process.env.WORKSPACE_MS_PORT ?? 4001),
+          port: Number(process.env.WORKSPACE_MS_PORT ?? 4002),
         },
       }
     ]),
