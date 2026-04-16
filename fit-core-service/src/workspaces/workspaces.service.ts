@@ -11,7 +11,7 @@ export class WorkspacesService {
 
 
   async create(idEntrenador: number) {
-    try{
+    try {
       const createdWorkspace = await this.prismaService.workspaces.create({
         data: {
           idEntrenador,
@@ -19,7 +19,7 @@ export class WorkspacesService {
         }
       })
       return idEntrenador
-    }catch(error){
+    } catch (error) {
       throw error
     }
   }
@@ -34,15 +34,19 @@ export class WorkspacesService {
       },
     });
 
-  if (!workspace) {
-    throw new Error('Workspace no encontrado');
+    if (!workspace) {
+      throw new Error('Workspace no encontrado');
+    }
+
+    const clients = (workspace.clients as any).clients;
+
+    return clients.map((client: any) => client.name);
   }
 
-  const clients = (workspace.clients as any).clients;
+  getCliente(idCliente: string) {
+    return clients.find(client => client.id === idCliente);
+  }
 
-  return clients.map((client: any) => client.name);
-}
-  
 
   async findWorkspace(idEntrenador: number) {
     try {

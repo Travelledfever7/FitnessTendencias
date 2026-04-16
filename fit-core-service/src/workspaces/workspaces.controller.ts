@@ -20,4 +20,9 @@ export class WorkspacesController {
   findClients(@Payload() data: { idEntrenador: number }) {
     return this.workspacesService.getClientNames(data.idEntrenador);
   }
+
+  @MessagePattern({ cmd : 'findClient' })
+  findClient(@Payload() data: { idCliente: string }) {
+    return this.workspacesService.getCliente(data.idCliente);
+  }
 }
